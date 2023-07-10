@@ -10,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.copy.Copys
-import com.example.copy.MainActivity2
 import com.example.copy.R
 import com.example.copy.model.AlphaChar
 
@@ -36,7 +35,7 @@ class AlphaAdapters(
         holder.alphas.text = alphaChar.alphaChar
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, alphaChar.alphaChar, Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, alphaChar.alphaChar, Toast.LENGTH_SHORT).show()
             when (position) {
                 1 -> {
                     val intent = Intent(context, Copys::class.java)

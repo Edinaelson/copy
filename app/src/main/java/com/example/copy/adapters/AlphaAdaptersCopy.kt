@@ -41,10 +41,31 @@ class AlphaAdaptersCopy (
             val clip = ClipData.newPlainText("Label", copy.textCopyText)
             clipboard.setPrimaryClip(clip)
 
-            Toast.makeText(holder.itemView.context, "copiado: " + copy.textCopyText, Toast.LENGTH_SHORT).show()
+            //ToastCustomizado
+
+            val layoutResId = R.layout.custom_toast // ID do layout customizado
+            val textViewId = R.id.txt_message // ID do TextView dentro do layout
+            val messages = copy.textCopyText
+
+            if (messages != null) {
+                showToastWithCustomLayout(holder.itemView.context, layoutResId, textViewId, messages)
+            }
+            //Toast.makeText(holder.itemView.context, "copiado: " + copy.textCopyText, Toast.LENGTH_SHORT).show()
         }
 
     }
+
+    fun showToastWithCustomLayout(context: Context, layoutResId: Int, textViewId: Int, message: String) {
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view = inflater.inflate(layoutResId, null)
+        val textView = view.findViewById<TextView>(textViewId)
+        textView.text = message
+        val toast = Toast(context)
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = view
+        toast.show()
+    }
+
 
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var iconDelete = itemView.findViewById<ImageView>(R.id.icons_delete)
